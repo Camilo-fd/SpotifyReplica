@@ -1,0 +1,128 @@
+@import url("./variables.css");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: content-box;
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(1, 1.3fr 2fr 1.3fr);
+}
+
+/* //////////////////////////////////////////////////////////////////// */
+
+.section_izquierda {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    /* border: 1px solid blue; */
+}
+
+.section_izquierda_header {
+    display: flex;
+    width: 60%;
+    height: 20%;
+    align-items: center;
+    /* margin-top: 3rem; */
+    margin-right: 6rem;
+    font-size: 2rem;
+    /* border: 1px solid red; */
+}
+
+.section_izquierda article {
+    border-radius: 1rem;
+    border: 1px solid red;
+    margin: .5rem;
+    /* margin-top: 2rem; */
+    height: 80%;
+}
+
+.section_izquierda_navegador {
+    display: flex;
+    /* border: 1px solid purple; */
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+#search-input {
+    padding: .6rem;
+    font-size: 16px;
+    border-radius: 20px 0 0 20px;
+    width: 16rem;
+    border: 2px solid #ccc;
+    border-right: none;
+}
+
+#search-button {
+    padding: .7rem 1rem;
+    font-size: 16px;
+    background: gray;
+    border: 2px solid #ccc;
+    /* color: black; */
+    border: none;
+    border-radius: 0 20px 20px 0;
+    cursor: pointer;
+}
+
+#search-button:hover {
+    background-color: green;
+}
+
+.section_izquierda_album {
+    display: grid;
+    height: 85%;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 2rem;
+    margin-left: 1rem;
+    overflow-y: hidden;
+}
+
+.section_izquierda_album img {
+    object-fit: contain;
+    width: 95%;
+}
+
+/* //////////////////////////////////////////////////////////////////// */
+
+.section_centro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    border: 1px solid green;
+}
+
+.section_centro_header {
+    display: flex;
+    width: 60%;
+    height: 20%;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    /* border: 1px solid red; */
+}
+
+/* //////////////////////////////////////////////////////////////////// */
+
+.section_derecha {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    /* border: 1px solid red; */
+}
+
+.section_derecha_header {
+    display: flex;
+    width: 60%;
+    height: 20%;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    /* border: 1px solid red; */
+}
