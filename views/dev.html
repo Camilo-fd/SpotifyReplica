@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <script type="module" src="../js/components/dev.js" ></script>
     <title>Music</title>
 </head>
 <body>
     <main>
-        <section class="section_izquierda">
+        <section id="1" class="section_izquierda">
             <article>
                 <header class="section_izquierda_header">
                     <h1>Discover New Music</h1>
@@ -17,20 +18,13 @@
                 <div class="section_izquierda_navegador">
                     <input id="search-input" type="text" placeholder="Buscar...">
                 </div>
-                <div class="section_izquierda_album">
-                        <div><iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4RbCdwPPk5XUpTrxAvntGM?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
-                        <div><iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4RbCdwPPk5XUpTrxAvntGM?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
-                        <div><iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4RbCdwPPk5XUpTrxAvntGM?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
-                        <div><iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4RbCdwPPk5XUpTrxAvntGM?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
-                        <div><iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4RbCdwPPk5XUpTrxAvntGM?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
-                        <div><iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4RbCdwPPk5XUpTrxAvntGM?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
-                        <div><iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4RbCdwPPk5XUpTrxAvntGM?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
-                        <div><iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4RbCdwPPk5XUpTrxAvntGM?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
-                        <div><iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4RbCdwPPk5XUpTrxAvntGM?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
+                <div  id="br" class="section_izquierda_album">
+                    <my-frame></my-frame>
+                    <!-- <my-frame uri="spotify:track:7chTH3GBjjAyagf0SPCZDL"></my-frame> -->
                 </div>
             </article>
         </section>
-        <section class="section_centro">
+        <section id="2" class="section_centro">
             <header class="section_centro_header">
                 <h1>Now playing</h1>
             </header>
@@ -43,7 +37,7 @@
                 </div>
             </article>
         </section>
-        <section class="section_derecha">
+        <section id="3" class="section_derecha">
             <article>
                 <header class="section_derecha_header">
                     <h1>Track list</h1>
@@ -67,17 +61,14 @@
         <nav class="menu" >
             <ul>
                 <li>
-                    <a href="#"><i class="bx bx-home"></i></a>
+                    <a href="#1"><i class="bx bx-home"></i></a>
                 </li>
                 <li>
-                    <a href="./views/balance.html"><i class="bx bx-book-bookmark"></i></a>
+                    <a href="#2"><i class="bx bx-book-bookmark"></i></a>
 
                 </li>
                 <li> 
-                    <a href="#"><i class="bx bx-grid-alt"></i></a>
-                </li>
-                <li> 
-                    <a href="#"><i class="bx bx-bell"></i></a>
+                    <a href="#3"><i class="bx bx-grid-alt"></i></a>
                 </li>
             </ul>
         </nav>
