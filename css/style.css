@@ -110,18 +110,39 @@ main {
 
 .section_centro_reproductor {
     display: flex;
+    flex-direction: column;
     width: 100%;
-    height: 80%;
+    height: 100%;
     justify-content: center;
     align-items: center;
     border-radius: 1rem;
     background: var(--color-tercer);
 }
 
+.menu {
+    display: none;
+    width: 25%;
+    height: 8%;
+    align-items: center;
+}
+
+.menu ul {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+.menu ul li {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
 .section_centro_navegador {
     display: flex;
-    width: 100;
-    height: 18%;
+    width: 100%;
+    height: 20%;
     margin-top: 0.7rem;
     justify-content: center;
     align-items: center;
@@ -219,10 +240,21 @@ main {
 /* /////////////////////////////////////////////////////////////////// */
 
 @media (width < 800px) {
+
+    body {
+        overflow: hidden;;
+    }
+
     main {
-        display: flex;
+        width: 100%; 
         height: 100%;
+        top: 0;
+        left: 0;
+        overflow-x: scroll;
         scroll-snap-type: x mandatory;
+        scroll-snap-type: x mandatory;
+        flex-direction: column;
+        scroll-snap-type: x mandatory; 
         flex-direction: column;
     }
 
@@ -230,7 +262,8 @@ main {
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 100vh;
+        width: 100vw;
+        /* height: 100vh; */
         background: var(--color-primary);
     }
     
@@ -289,8 +322,8 @@ main {
 
     .section_centro {
         display: flex;
-        width: 100%;
-        height: 100vh;
+        width: 100vw;
+        /* height: 100vh; */
         gap: 0.7rem;
         flex-direction: column;
         align-items: center;
@@ -319,13 +352,42 @@ main {
     .section_centro_reproductor {
         display: flex;
         width: 100%;
-        height: 90%;
+        height: 100%;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-        border-radius: 1rem;
+        /* border-radius: 1rem; */
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
         background: var(--color-tercer);
     }
 
+    .menu {
+        display: flex;
+        position: fixed;
+        width: 100%;
+        height: 8%;
+        bottom: 0;
+        align-items: center;
+        background: var(--color-primary);
+    }
+    
+    .menu ul {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+    }
+    
+    .menu ul li {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .menu ul li i {
+        color: white
+    }
     .section_centro_navegador {
         display: flex;
         width: 100;
@@ -354,8 +416,8 @@ main {
 
     .section_derecha {
         display: flex;
-        width: 100%;
-        /* height: 100%; */
+        width: 100vw;
+        /* height: 50%; */
         flex-direction: column;
     }
 
