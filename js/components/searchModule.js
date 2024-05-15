@@ -7,20 +7,20 @@ export const search = () => {
     });
 }
 
-const datosJson = async() => {
+export const datosJson = async() => {
     let dato = await (await fetch('../storage/img/album2.json')).json()
     for (let i = 0; i < dato.albums.items.length; i++) {
         if (dato.albums.items[i].data && dato.albums.items[i].data.coverArt && dato.albums.items[i].data.coverArt.sources && dato.albums.items[i].data.coverArt.sources.length > 0) {
-            // let primeraUrl = dato.albums.items[i].data.coverArt.sources[0].url;
-            let names = dato.albums.items[i].data.name
-            let uri = dato.albums.items[i].data.uri
+            let dataUrl = dato.albums.items[i].data.coverArt.sources[0].url;
+            let dataUri = dato.albums.items[i].data.uri;
+            let dataId = dataUri.split(':')[2];
 
-            return uri
+            return [dataUrl, dataId]
         }
     }
 }
 
-console.log(await datosJson());
+// console.log(await datosJson());
 
 
 
