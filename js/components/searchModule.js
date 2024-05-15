@@ -9,17 +9,35 @@ export const search = () => {
 
 export const datosJson = async() => {
     let dato = await (await fetch('../storage/img/album2.json')).json()
-    for (let i = 0; i < dato.albums.items.length; i++) {
+    for (let i = 0; i < 8 && i < dato.albums.items.length; i++) {
         if (dato.albums.items[i].data && dato.albums.items[i].data.coverArt && dato.albums.items[i].data.coverArt.sources && dato.albums.items[i].data.coverArt.sources.length > 0) {
             let dataUrl = dato.albums.items[i].data.coverArt.sources[0].url;
             let dataUri = dato.albums.items[i].data.uri;
+            let dataName = dato.albums.items[i].data.name;
             let dataId = dataUri.split(':')[2];
 
-            return [dataUrl, dataId]
+            return [dataUrl, dataId, dataName]
         }
     }
 }
-
+console.log(await datosJson());
+    
+// export const datosJson = async () => {
+//     let dato = await (await fetch('../storage/img/album2.json')).json();
+//     let val = []
+  
+//     for (let i = 0; i < 8 && i < dato.albums.items.length; i++) {
+//       if (dato.albums.items[i].data && dato.albums.items[i].data.coverArt && dato.albums.items[i].data.coverArt.sources && dato.albums.items[i].data.coverArt.sources.length > 0) {
+//         let dataUrl = dato.albums.items[i].data.coverArt.sources[0].url;
+//         let dataUri = dato.albums.items[i].data.uri;
+//         let dataName = dato.albums.items[i].data.name;
+//         let dataId = dataUri.split(':')[2];
+//         val.push(dataUrl, dataId, dataName);
+//     }
+//     return val;
+// }
+// };
+// datosJson()
 // console.log(await datosJson());
 
 

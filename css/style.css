@@ -237,6 +237,17 @@ main {
     background: #555;
 }
 
+
+my-album {
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+my-album img {
+    border: 1px solid red;
+}
+
 /* /////////////////////////////////////////////////////////////////// */
 
 @media (width < 800px) {

@@ -10,10 +10,14 @@ class myAlbum extends HTMLElement {
             let data = await datosJson();
             let url = data[0];
             let id = data[1];
+            let name = data[2];
             let templates = `
-              <img id="album__${id + 1}" src="${url}" alt="" data-album-id="${id}">
+              <div class="my__album">
+                <h1>${name}</h1>
+                <img  src="${url}" alt="" data-album-id="${id}">
+              </div>
             `;
-            this.innerHTML = templates;
+            this.shadowRoot.innerHTML = templates;
           } catch (error) {
             console.error(error);
           }
