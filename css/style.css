@@ -238,14 +238,25 @@ main {
 }
 
 
-my-album {
+.contenedor_albums {
     display: flex;
+    width: 100%;
     flex-direction: column;
     color: white;
 }
+.data_album{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* padding-left: 1rem; */
+    padding-top: 1.5rem;
+    /* border: 1px solid red; */
+}
 
-my-album img {
-    border: 1px solid red;
+.data_album img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* /////////////////////////////////////////////////////////////////// */
