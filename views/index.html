@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <script type="module" src="../js/components/searchModule.js" ></script>
+    <!-- <script type="module" src="../js/main.js" ></script> -->
     <title>Music</title>
 </head>
 <body>
@@ -28,7 +29,8 @@
             </header>
             <article>
                 <div class="section_centro_reproductor">
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7chTH3GBjjAyagf0SPCZDL?utm_source=generator" width="400" height="400" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <my-frame id="section_middleFrame" class= "section_middleFrame" uri="spotify:album:2G4AUqfwxcV1UdQjm2ouYr"></my-frame>
+                    <!-- <iframe class="spotify-iframe" width="454" height="690" src="https://open.spotify.com/embed/track/7chTH3GBjjAyagf0SPCZDL" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> -->
                     <div class="section_centro_navegador">
                         <input id="search-input" type="text" placeholder="Buscar...">
                     </div>

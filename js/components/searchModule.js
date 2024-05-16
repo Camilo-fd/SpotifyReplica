@@ -54,45 +54,38 @@ export const datosJson = async() => {
 }
 
 datosJson()
-    
-// export const datosJson = async () => {
-//     let dato = await (await fetch('../storage/img/album2.json')).json();
-//     let val = []
-  
-//     for (let i = 0; i < 8 && i < dato.albums.items.length; i++) {
-//       if (dato.albums.items[i].data && dato.albums.items[i].data.coverArt && dato.albums.items[i].data.coverArt.sources && dato.albums.items[i].data.coverArt.sources.length > 0) {
-//         let dataUrl = dato.albums.items[i].data.coverArt.sources[0].url;
-//         let dataUri = dato.albums.items[i].data.uri;
-//         let dataName = dato.albums.items[i].data.name;
-//         let dataId = dataUri.split(':')[2];
-//         val.push(dataUrl, dataId, dataName);
-//     }
-//     return val;
-// }
-// };
-// datosJson()
-// console.log(await datosJson());
 
+class myframe extends HTMLElement{
+    constructor() {
+        super();
+        this.attachShadow({ mode: "open" });
+    }
 
+    connectedCallback() {
+        this.renderFrame();
+    }
 
+    renderFrame() {
+        const uri = this.getAttribute('uri');
+        if (uri) {
+            const id = uri.split(':')[2];
+            const typeOf = uri.split(':')[1];
+            this.shadowRoot.innerHTML = `
+                <iframe class="spotify-iframe" width="100%" height="670" src="https://open.spotify.com/embed/${typeOf}/${id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            `;
+        } else {
+            this.shadowRoot.innerHTML = '';
+        }
+    }
 
+    static get observedAttributes() {
+        return ["uri"];
+    }
 
-
-// console.log(await datosJson());
-// const options = {
-//   method: 'GET',
-//   headers: {
-//     'X-RapidAPI-Key': '2fbdf41833msh18ff7c8d94f130bp1126eejsndb31ef662eac',
-//     'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
-//   }
-// };
-
-// try {
-//   const response = await fetch(url, options);
-//   const result = await response.json();
-//   for (let i = 0; i < result.albums.items.length; i++) {
-//     console.log(result.albums.items[i].uri);
-//   }
-// } catch (error) {
-//   console.error(error);
-// }   
+    attributeChangedCallback(name, oldVal, newVal) {
+        if (name === 'uri' && oldVal !== newVal) {
+            this.renderFrame();
+        }
+    }
+}
+customElements.define("my-frame",myframe)
