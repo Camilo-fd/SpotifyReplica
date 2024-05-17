@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-let code = "%20";
+let code = "anuel";
 document.addEventListener('DOMContentLoaded', () => {
     albums(code);
 });
@@ -55,36 +55,6 @@ class myframe extends HTMLElement{
 }
 customElements.define("my-frame",myframe)
 
-
-// const cancion = async (valor) => {
-//     const url = `https://spotify23.p.rapidapi.com/search/?q=${valor}&type=albums&offset=0&limit=10&numberOfTopResults=5`;
-//     const options = {
-//         method: 'GET',
-//         headers: {
-//             'X-RapidAPI-Key': '806062533fmsh3bc74c884ecb12dp1fd2a6jsnf85e5ef161be',
-//             'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
-//         }
-//     };
-    
-//     try {
-//         const response = await fetch(url, options);
-//         const result = await response.json();
-//         let variable = result.albums.items
-//         // const myFrameElement = document.querySelector('my-frame');
-
-//         for (let i = 0; i < 1 && i < variable.length; i++) {
-//         const uri = variable[i].data.uri;
-        
-//         // myFrameElement.setAttribute('uri', uri);
-//         // await new Promise(resolve => setTimeout(resolve, 10000));
-//         }
-//     } catch (error) {
-//         console.log(error);
-//     }
-// };
-
-// cancion()
-
 // -----------------------------------------------------------------------------
 
 export const albums = async(valor) => {
@@ -92,12 +62,13 @@ export const albums = async(valor) => {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '806062533fmsh3bc74c884ecb12dp1fd2a6jsnf85e5ef161be',
+            'X-RapidAPI-Key': '',
             'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
         }
     };
     
     try {
+        // const cancion = await cancion() 
         const response = await fetch(url, options);
         const result = await response.json();
         let variable = result.albums.items
@@ -127,6 +98,10 @@ export const albums = async(valor) => {
                 const frame = document.querySelector("#section_middleFrame");
                 frame.setAttribute("uri", `spotify:album:${uri}`);
             });
+            etiqueta.querySelector('.data_album').addEventListener('click', () => {
+                const card = document.querySelector("#section_micard")
+                card.setAttribute("uri", `spotify:track:${uri}`);
+            })
         }
     } catch (error) {
         console.error(error);
@@ -135,5 +110,68 @@ export const albums = async(valor) => {
 
 albums()
 
+// -----------------------------------------------------------------------------
 
+class myCard extends HTMLElement{
+    constructor() {
+        super();
+        this.attachShadow({ mode: "open" });
+    }
+
+    connectedCallback() {
+        this.renderFrame();
+    }
+
+    renderFrame() {
+        const uri = this.getAttribute('uri');
+        if (uri) {
+            const id = uri.split(':')[2];
+            const typeOf = uri.split(':')[1];
+            this.shadowRoot.innerHTML = `
+                <iframe class="spotify-iframe" width="450" height="200" src="https://open.spotify.com/embed/track/${id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            `;
+        } else {
+            this.shadowRoot.innerHTML = '';
+        }
+    }
+
+    static get observedAttributes() {
+        return ["uri"];
+    }
+
+    attributeChangedCallback(name, oldVal, newVal) {
+        if (name === 'uri' && oldVal !== newVal) {
+            this.renderFrame();
+        }
+    }
+}
+customElements.define("my-card",myCard)
+
+
+
+const cancion = async (valor) => {
+    const url = `https://spotify23.p.rapidapi.com/albums/?ids=${valor}`;
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '',
+            'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
+        }
+    };
+    
+    try {
+        const response = await fetch(url, options);
+        const result = await response.json();
+        let variable = result.albums.tracks
+        for (let i = 0; i < variable.length; i++) {
+            let dataUri = variable[i].items[0].uri
+            let uri = dataUri.split(":")[2]
+            console.log(uri);
+        }
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+cancion()
 

@@ -21,6 +21,43 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// --------------------------------------------------------------------------------
+
+class MyFrame extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+    this.typeOf = null;
+    this.id = null;
+  }
+
+  connectedCallback() {
+    this.renderFrame();
+  }
+
+  renderFrame() {
+    this.shadowRoot.innerHTML = `
+    <iframe class="spotify-iframe" width="500" height="450" src="https://open.spotify.com/embed/${this.typeOf}/${this.id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    `;
+  }
+
+  static get observedAttributes() {
+    return ["uri"];
+  }
+
+  attributeChangedCallback(name, oldVal, newVal) {
+    if (name === 'uri' && oldVal !== newVal) {
+      const [, typeOf, id] = newVal.split(':');
+      this.typeOf = typeOf;
+      this.id = id;
+      this.renderFrame();
+    }
+  }
+}
+
+customElements.define("my-frame", MyFrame);
+
+// --------------------------------------------------------------------------------
 
 export const datosJson = async() => {
     try {
@@ -47,6 +84,10 @@ export const datosJson = async() => {
                 </div> 
             `
             izquierda_albums.append(etiqueta)
+            etiqueta.querySelector('.data_album').addEventListener('click', () => {
+              const frame = document.querySelector("#section_middleFrame");
+              frame.setAttribute("uri", `spotify:album:${uri}`);
+          });
         }
     } catch (error) {
         console.log(error);
@@ -57,54 +98,37 @@ datosJson()
 
 // --------------------------------------------------------------------------------
 
-class MyFrame extends HTMLElement {
-    constructor() {
+class myCard extends HTMLElement{
+  constructor() {
       super();
       this.attachShadow({ mode: "open" });
-      this.typeOf = null;
-      this.id = null;
-    }
-  
-    connectedCallback() {
-      this.renderFrame();
-    }
-  
-    renderFrame() {
-      this.shadowRoot.innerHTML = `
-      <iframe class="spotify-iframe" width="500" height="450" src="https://open.spotify.com/embed/${this.typeOf}/${this.id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-      `;
-    }
-  
-    static get observedAttributes() {
-      return ["uri"];
-    }
-  
-    attributeChangedCallback(name, oldVal, newVal) {
-      if (name === 'uri' && oldVal !== newVal) {
-        const [, typeOf, id] = newVal.split(':');
-        this.typeOf = typeOf;
-        this.id = id;
-        this.renderFrame();
-      }
-    }
   }
-  
-customElements.define("my-frame", MyFrame);
-  
-const datosCancion = async () => {
-    try {
-        const dato = await (await fetch('../storage/img/album2.json')).json();
-        const variable = dato.tracks.items;
-        const myFrameElement = document.querySelector('my-frame');
 
-        for (let i = 0;i < 9 &&  i < variable.length; i++) {
-        const uri = variable[i].data.uri;
-        myFrameElement.setAttribute('uri', uri);
-        // await new Promise(resolve => setTimeout(resolve, 10000));
-        }
-    } catch (error) {
-        console.log(error);
-    }
-};
+  connectedCallback() {
+      this.renderFrame();
+  }
 
-datosCancion()
+  renderFrame() {
+      const uri = this.getAttribute('uri');
+      if (uri) {
+          const id = uri.split(':')[2];
+          const typeOf = uri.split(':')[1];
+          this.shadowRoot.innerHTML = `
+              <iframe class="spotify-iframe" width="450" height="200" src="https://open.spotify.com/embed/${typeOf}/${id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          `;
+      } else {
+          this.shadowRoot.innerHTML = '';
+      }
+  }
+
+  static get observedAttributes() {
+      return ["uri"];
+  }
+
+  attributeChangedCallback(name, oldVal, newVal) {
+      if (name === 'uri' && oldVal !== newVal) {
+          this.renderFrame();
+      }
+  }
+}
+customElements.define("my-card",myCard)
