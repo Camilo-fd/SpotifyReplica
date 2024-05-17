@@ -4,6 +4,7 @@
     padding: 0;
     margin: 0;
     box-sizing: content-box;
+    font-family:sans-serif;
 }
 
 body {
@@ -78,6 +79,41 @@ main {
     background: var(--color-tercer);
 }
 
+.contenedor_albums {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    color: white;
+    cursor: pointer;
+}
+.data_album{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.info_album{
+    display: flex;
+    flex-direction: column;
+    height: 15%;
+    font-size: 0.8rem;
+}
+
+.imagen_album {
+    width: 100%;
+    height: 85%;
+    border-radius: 1rem;
+}
+
+.imagen_album img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 1rem;
+}
+
 /* //////////////////////////////////////////////////////////////////// */
 
 .section_centro {
@@ -113,10 +149,20 @@ main {
     flex-direction: column;
     width: 100%;
     height: 100%;
+    /* border: 1px solid red; */
     justify-content: center;
     align-items: center;
     border-radius: 1rem;
     background: var(--color-tercer);
+}
+
+my-frame {
+    display: flex;
+    /* margin-top: 5rem; */
+    justify-content: center;
+    /* border: 1px solid blue; */
+    width: 100%;
+    height: 70%;   
 }
 
 .menu {
@@ -237,36 +283,6 @@ main {
     background: #555;
 }
 
-
-.contenedor_albums {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    color: white;
-    cursor: pointer;
-}
-.data_album{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    /* padding-left: 1rem; */
-    padding-top: 1.5rem;
-    /* border: 1px solid red; */
-}
-
-.data_album img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-my-frame {
-    width: 80%;
-    height: 100%;
-    /* border : 1px solid red; */
-}
-
-
 /* /////////////////////////////////////////////////////////////////// */
 
 @media (width < 800px) {
@@ -346,7 +362,41 @@ my-frame {
         border-radius: 0.7rem;
         background: var(--color-tercer);
     }
+
+    .contenedor_albums {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        /* flex-direction: column; */
+        cursor: pointer;
+    }
+    .data_album{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
     
+    .info_album{
+        display: flex;
+        flex-direction: column;
+        height: 15%;
+        font-size: 0.8rem;
+    }
+    
+    .imagen_album {
+        width: 70%;
+        height: 90%;
+        border-radius: 1rem;
+    }
+    
+    .imagen_album img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 1rem;
+    }  
 
     /* ////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -386,10 +436,23 @@ my-frame {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        /* border-radius: 1rem; */
+        /* gap: 2rem; */
         border-top-left-radius: 1rem;
         border-top-right-radius: 1rem;
         background: var(--color-tercer);
+    }
+
+    /* !RECUERDE¡ CODIGO CORRECTO PARA TENERLO RESPONSIVE CON LA FUNCION "CANCION" */
+    /* my-frame {
+        display: flex;
+        width: 90%;
+        height: 50%;
+    } */
+
+     my-frame {
+        display: flex;
+        width: 90%;
+        height: 50%;
     }
 
     .menu {
@@ -426,8 +489,8 @@ my-frame {
     .section_centro_navegador {
         display: flex;
         width: 100;
-        height: 10%;
-        margin-top: 0.7rem;
+        height: 20%;
+        margin-bottom: 6rem;
         justify-content: center;
         align-items: center;
         border-radius: 0.7rem;
@@ -459,7 +522,7 @@ my-frame {
 
     .section_derecha_navegador input[type="text"] {
         padding: 10px;
-        width: 85%;
+        width: 80%;
         border: 1px solid #ccc;
         border-radius: 0.8rem;
         font-size: 16px;

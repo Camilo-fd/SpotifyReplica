@@ -55,37 +55,56 @@ export const datosJson = async() => {
 
 datosJson()
 
-class myframe extends HTMLElement{
+// --------------------------------------------------------------------------------
+
+class MyFrame extends HTMLElement {
     constructor() {
-        super();
-        this.attachShadow({ mode: "open" });
+      super();
+      this.attachShadow({ mode: "open" });
+      this.typeOf = null;
+      this.id = null;
     }
-
+  
     connectedCallback() {
-        this.renderFrame();
+      this.renderFrame();
     }
-
+  
     renderFrame() {
-        const uri = this.getAttribute('uri');
-        if (uri) {
-            const id = uri.split(':')[2];
-            const typeOf = uri.split(':')[1];
-            this.shadowRoot.innerHTML = `
-                <iframe class="spotify-iframe" width="100%" height="670" src="https://open.spotify.com/embed/${typeOf}/${id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-            `;
-        } else {
-            this.shadowRoot.innerHTML = '';
-        }
+      this.shadowRoot.innerHTML = `
+      <iframe class="spotify-iframe" width="500" height="450" src="https://open.spotify.com/embed/${this.typeOf}/${this.id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+      `;
     }
-
+  
     static get observedAttributes() {
-        return ["uri"];
+      return ["uri"];
     }
-
+  
     attributeChangedCallback(name, oldVal, newVal) {
-        if (name === 'uri' && oldVal !== newVal) {
-            this.renderFrame();
-        }
+      if (name === 'uri' && oldVal !== newVal) {
+        const [, typeOf, id] = newVal.split(':');
+        this.typeOf = typeOf;
+        this.id = id;
+        this.renderFrame();
+      }
     }
-}
-customElements.define("my-frame",myframe)
+  }
+  
+  customElements.define("my-frame", MyFrame);
+  
+  const cancion = async () => {
+    try {
+      const dato = await (await fetch('../storage/img/album2.json')).json();
+      const variable = dato.tracks.items;
+      const myFrameElement = document.querySelector('my-frame');
+  
+      for (let i = 0; i < variable.length; i++) {
+        const uri = variable[i].data.uri;
+        myFrameElement.setAttribute('uri', uri);
+        // await new Promise(resolve => setTimeout(resolve, 1000));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+cancion()
