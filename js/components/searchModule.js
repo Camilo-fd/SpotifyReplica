@@ -89,22 +89,22 @@ class MyFrame extends HTMLElement {
     }
   }
   
-  customElements.define("my-frame", MyFrame);
+customElements.define("my-frame", MyFrame);
   
-  const cancion = async () => {
+const datosCancion = async () => {
     try {
-      const dato = await (await fetch('../storage/img/album2.json')).json();
-      const variable = dato.tracks.items;
-      const myFrameElement = document.querySelector('my-frame');
-  
-      for (let i = 0; i < variable.length; i++) {
+        const dato = await (await fetch('../storage/img/album2.json')).json();
+        const variable = dato.tracks.items;
+        const myFrameElement = document.querySelector('my-frame');
+
+        for (let i = 0;i < 9 &&  i < variable.length; i++) {
         const uri = variable[i].data.uri;
         myFrameElement.setAttribute('uri', uri);
-        // await new Promise(resolve => setTimeout(resolve, 1000));
-      }
+        // await new Promise(resolve => setTimeout(resolve, 10000));
+        }
     } catch (error) {
-      console.log(error);
+        console.log(error);
     }
-  };
+};
 
-cancion()
+datosCancion()

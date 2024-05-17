@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (query) {
           code = query.replace(" ", "%20");
           albums(code);
+        //   cancion(code)
         }
       }
     });
@@ -54,6 +55,36 @@ class myframe extends HTMLElement{
 }
 customElements.define("my-frame",myframe)
 
+
+// const cancion = async (valor) => {
+//     const url = `https://spotify23.p.rapidapi.com/search/?q=${valor}&type=albums&offset=0&limit=10&numberOfTopResults=5`;
+//     const options = {
+//         method: 'GET',
+//         headers: {
+//             'X-RapidAPI-Key': '806062533fmsh3bc74c884ecb12dp1fd2a6jsnf85e5ef161be',
+//             'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
+//         }
+//     };
+    
+//     try {
+//         const response = await fetch(url, options);
+//         const result = await response.json();
+//         let variable = result.albums.items
+//         // const myFrameElement = document.querySelector('my-frame');
+
+//         for (let i = 0; i < 1 && i < variable.length; i++) {
+//         const uri = variable[i].data.uri;
+        
+//         // myFrameElement.setAttribute('uri', uri);
+//         // await new Promise(resolve => setTimeout(resolve, 10000));
+//         }
+//     } catch (error) {
+//         console.log(error);
+//     }
+// };
+
+// cancion()
+
 // -----------------------------------------------------------------------------
 
 export const albums = async(valor) => {
@@ -61,7 +92,7 @@ export const albums = async(valor) => {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '2fbdf41833msh18ff7c8d94f130bp1126eejsndb31ef662eac',
+            'X-RapidAPI-Key': '806062533fmsh3bc74c884ecb12dp1fd2a6jsnf85e5ef161be',
             'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
         }
     };
@@ -92,13 +123,10 @@ export const albums = async(valor) => {
                 </div> 
             `
             izquierda_albums.append(etiqueta)
-            // etiqueta.querySelector("main__frame").addEventListener("click", () =>{
-            //     let frame = document.querySelector("my-frame");
-            //     frame.remove()
-            //     frame.setAttribute("uri", uri);
-            //     let section = document.querySelector(".section_centro_reproductor")
-            //     section.append(frame)
-            // })
+            etiqueta.querySelector('.data_album').addEventListener('click', () => {
+                const frame = document.querySelector("#section_middleFrame");
+                frame.setAttribute("uri", `spotify:album:${uri}`);
+            });
         }
     } catch (error) {
         console.error(error);
