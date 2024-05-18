@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // -----------------------------------------------------------------------------
 
-class myframe extends HTMLElement{
+class myFrame extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: "open" });
@@ -53,55 +53,50 @@ class myframe extends HTMLElement{
         }
     }
 }
-customElements.define("my-frame",myframe)
+customElements.define("my-frame", myFrame);
 
-// -----------------------------------------------------------------------------
-
-export const albums = async(valor) => {
+export const albums = async (valor) => {
     const url = `https://spotify23.p.rapidapi.com/search/?q=${valor}&type=albums&offset=0&limit=10&numberOfTopResults=5`;
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '',
+            'X-RapidAPI-Key': 'e896a3c520mshc9e11ce9d1cc3fap12cf6djsnc58e61900243',
             'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
         }
     };
-    
+
     try {
-        // const cancion = await cancion() 
         const response = await fetch(url, options);
         const result = await response.json();
-        let variable = result.albums.items
-        izquierda_albums.innerHTML = ""
+        const variable = result.albums.items;
+        izquierda_albums.innerHTML = "";
         for (let i = 0; i < variable.length; i++) {
-            let dataUrl = variable[i].data.coverArt.sources[0].url;
-            let dataUri = variable[i].data.uri;
-            let dataName = variable[i].data.name;
-            let dataArtista = variable[i].data.artists.items[0].profile.name 
-            let uri = variable[i].data.uri.split(":")[2]
+            const dataUrl = variable[i].data.coverArt.sources[0].url;
+            const dataUri = variable[i].data.uri;
+            const dataName = variable[i].data.name;
+            const dataArtista = variable[i].data.artists.items[0].profile.name;
+            const uri = variable[i].data.uri.split(":")[2];
 
-            let etiqueta = document.createElement("div")
-            etiqueta.classList.add("contenedor_albums")
+            const etiqueta = document.createElement("div");
+            etiqueta.classList.add("contenedor_albums");
             etiqueta.innerHTML = `
                 <div class="data_album" data-id="${dataUri}">
                     <div class="imagen_album">
                         <img src="${dataUrl}" alt="" class="portada">
                      </div>
-                    <div<div class="info_album">
+                    <div class="info_album">
                         <h3>${dataName}</h3>
                         <p>${dataArtista}</p>
                     </div>
                 </div> 
-            `
-            izquierda_albums.append(etiqueta)
-            etiqueta.querySelector('.data_album').addEventListener('click', () => {
+            `;
+            izquierda_albums.append(etiqueta);
+
+            etiqueta.querySelector('.data_album').addEventListener('click', async () => {
                 const frame = document.querySelector("#section_middleFrame");
                 frame.setAttribute("uri", `spotify:album:${uri}`);
+                await cancion(uri);
             });
-            etiqueta.querySelector('.data_album').addEventListener('click', () => {
-                const card = document.querySelector("#section_micard")
-                card.setAttribute("uri", `spotify:track:${uri}`);
-            })
         }
     } catch (error) {
         console.error(error);
@@ -149,24 +144,29 @@ customElements.define("my-card",myCard)
 
 
 
-const cancion = async (valor) => {
-    const url = `https://spotify23.p.rapidapi.com/albums/?ids=${valor}`;
+const cancion = async (dato) => {
+    const url = `https://spotify23.p.rapidapi.com/albums/?ids=${dato}`;
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '',
+            'X-RapidAPI-Key': 'e896a3c520mshc9e11ce9d1cc3fap12cf6djsnc58e61900243',
             'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
         }
     };
-    
+
     try {
         const response = await fetch(url, options);
         const result = await response.json();
-        let variable = result.albums.tracks
+        const variable = result.albums[0].tracks.items;
+        const cancionesContainer = document.querySelector("my-card");
+        cancionesContainer.removeAttribute("uri");
+
         for (let i = 0; i < variable.length; i++) {
-            let dataUri = variable[i].items[0].uri
-            let uri = dataUri.split(":")[2]
-            console.log(uri);
+            const dataUri = variable[i].uri;
+            const uri = dataUri.split(":")[2];
+            if ( i == 0) {
+                cancionesContainer.setAttribute("uri", `spotify:track:${uri}`);
+            }
         }
     } catch (error) {
         console.error(error);
@@ -174,4 +174,3 @@ const cancion = async (valor) => {
 };
 
 cancion()
-
