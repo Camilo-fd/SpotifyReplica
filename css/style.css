@@ -279,9 +279,52 @@ my-frame {
     height: 80%;
     border-radius: 1rem;
     flex-direction: column;
+    gap: 2rem;
     align-items: center;
     overflow-y: scroll;
     background: var(--color-tercer);
+}
+
+.contenedor_canciones {
+    display: flex;
+    width: 85%;
+    height: 80%;
+    color: white;
+    cursor: pointer;
+}
+
+.data_canciones {
+    display: flex;
+    background: var(--color-body-canciones);
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+}
+
+.imagen_cancion {
+    width: 20%;
+    height: 100%;
+}
+
+.info_cancion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    padding-left: 1rem;
+    /* align-items: center; */
+    width: 80%;
+    height: 100%;
+}
+
+.imagen_cancion img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
 }
 
 ::-webkit-scrollbar {
