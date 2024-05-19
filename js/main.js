@@ -63,7 +63,7 @@ export const albums = async (valor) => {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': 'e896a3c520mshc9e11ce9d1cc3fap12cf6djsnc58e61900243',
+            'X-RapidAPI-Key': '',
             'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
         }
     };
@@ -111,7 +111,7 @@ const cancion = async (albumId) => {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': 'e896a3c520mshc9e11ce9d1cc3fap12cf6djsnc58e61900243',
+            'X-RapidAPI-Key': '',
             'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
         }
     };

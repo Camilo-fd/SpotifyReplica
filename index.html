@@ -3,13 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sporify</title>
+    <link rel="stylesheet" href="./css/components/carga.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <!-- <script type="module" src="./js/components/searchModule.js" ></script> -->
-    <script type="module" src="./js/main.js" defer ></script>
-    <title>Music</title>
+    <!-- <script type="module" src="./js/main.js" defer ></script> -->
+    <script type="module" src="./js/components/carga.js"></script>
 </head>
 <body>
+    <audio id="welcome-sound" src="./storage/advertising-logo-199582.mp3"></audio>
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-content">
+            <i class='bx bxl-spotify' style='color:#1dd960'  ></i>
+            <h2>Bienvenido a tu reproductor de música</h2>
+            <p>¿Quieres iniciar?</p>
+            <button class="loading-button" id="start-button">Iniciar</button>
+        </div>
+    </div>
     <main>
         <section id="1" class="section_izquierda">
             <article>
