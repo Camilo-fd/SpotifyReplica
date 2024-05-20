@@ -1,0 +1,86 @@
+{
+    "tracks": [
+      {
+        "album": {
+          "album_type": "album",
+          "artists": [
+            {
+              "external_urls": {
+                "spotify": "https://open.spotify.com/artist/1TA5sGRlKUJXBN4ZyJuDIX"
+              },
+              "id": "1TA5sGRlKUJXBN4ZyJuDIX",
+              "name": "Blessd",
+              "type": "artist",
+              "uri": "spotify:artist:1TA5sGRlKUJXBN4ZyJuDIX"
+            }
+          ],
+          "external_urls": {
+            "spotify": "https://open.spotify.com/album/7ot6ebVthlYG3wXzLaZ5NF"
+          },
+          "id": "7ot6ebVthlYG3wXzLaZ5NF",
+          "images": [
+            {
+              "height": 640,
+              "url": "https://i.scdn.co/image/ab67616d0000b2739634fca36bf59f758ec93aa3",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://i.scdn.co/image/ab67616d00001e029634fca36bf59f758ec93aa3",
+              "width": 300
+            },
+            {
+              "height": 64,
+              "url": "https://i.scdn.co/image/ab67616d000048519634fca36bf59f758ec93aa3",
+              "width": 64
+            }
+          ],
+          "is_playable": true,
+          "name": "SI SABE",
+          "release_date": "2024-01-25",
+          "release_date_precision": "day",
+          "total_tracks": 14,
+          "type": "album",
+          "uri": "spotify:album:7ot6ebVthlYG3wXzLaZ5NF"
+        },
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/1TA5sGRlKUJXBN4ZyJuDIX"
+            },
+            "id": "1TA5sGRlKUJXBN4ZyJuDIX",
+            "name": "Blessd",
+            "type": "artist",
+            "uri": "spotify:artist:1TA5sGRlKUJXBN4ZyJuDIX"
+          },
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/2LRoIwlKmHjgvigdNGBHNo"
+            },
+            "id": "2LRoIwlKmHjgvigdNGBHNo",
+            "name": "Feid",
+            "type": "artist",
+            "uri": "spotify:artist:2LRoIwlKmHjgvigdNGBHNo"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 152500,
+        "explicit": true,
+        "external_ids": {
+          "isrc": "QZZ3N2400002"
+        },
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/7chTH3GBjjAyagf0SPCZDL"
+        },
+        "id": "7chTH3GBjjAyagf0SPCZDL",
+        "is_local": false,
+        "is_playable": true,
+        "name": "SI SABE FERXXO",
+        "popularity": 82,
+        "preview_url": "https://p.scdn.co/mp3-preview/e9147c41eca750caae9b702042e29f6697478f75?cid=d8a5ed958d274c2e8ee717e6a4b0971d",
+        "track_number": 2,
+        "type": "track",
+        "uri": "spotify:track:7chTH3GBjjAyagf0SPCZDL"
+      }
+    ]
+  }
