@@ -167,7 +167,7 @@ const cancion = async (albumId) => {
                         <img src="${dataImage}" alt="" class="cancion">
                      </div>
                     <div class="info_cancion">
-                        <h3>${dataName}</h3>
+                        <p>${dataName}</p>
                         <h3>${dataArtista}</h3>
                     </div>
                 </div>

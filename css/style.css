@@ -43,7 +43,7 @@ main {
     align-items: center;
     border-radius: 1rem;
     font-size: 2rem;
-    color: white;
+    color: rgb(15, 230, 83);
     background: var(--color-tercer);
 }
 
@@ -171,7 +171,7 @@ main {
     font-size: 2rem;
     border-radius: 1rem;
     background: var(--color-tercer);
-    color: white;
+    color: rgb(15, 230, 83);
 }
 
 .section_centro article {
@@ -272,7 +272,7 @@ my-frame {
     align-items: center;
     font-size: 2rem;
     border-radius: 1rem;
-    color: white;
+    color: rgb(15, 230, 83);
     background: var(--color-tercer);
 }
 
@@ -317,9 +317,15 @@ my-frame {
     cursor: pointer;
 }
 
+.contenedor_canciones:hover{
+    transition: width  0.3s, height 1s;
+    width: 80%;
+    height: 100%;
+}
+
 .data_canciones {
     display: flex;
-    background: var(--color-canciones);
+    background: var(--color-body-canciones);
     justify-content: flex-start;
     align-items: center;
     width: 100%;
