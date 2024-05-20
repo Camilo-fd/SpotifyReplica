@@ -16,17 +16,17 @@ document.addEventListener('DOMContentLoaded', () => {
     let search_input = document.querySelector("#search-input-derecha");
 
     search_input.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter') {
+    if (event.key === 'Enter') {
         const query = search_input.value.trim();
         if (query) {
             code = query.replace(" ", "%20");
             listarCancion(code)
         }
-      }
+    }
     });
 });
 
-let code = "anuel";
+let code = "blessd";
 document.addEventListener('DOMContentLoaded', () => {
     albums(code);
     listarCancion(code)
@@ -55,7 +55,7 @@ class myFrame extends HTMLElement {
             const id = uri.split(':')[2];
             const typeOf = uri.split(':')[1];
             this.shadowRoot.innerHTML = `
-                <iframe class="spotify-iframe" width="100%" height="670" src="https://open.spotify.com/embed/${typeOf}/${id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                <iframe class="spotify-iframe" width="100%" height="550" src="https://open.spotify.com/embed/${typeOf}/${id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
             `;
             // 550
         } else {
@@ -81,7 +81,7 @@ export const albums = async (valor) => {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '',
+            'X-RapidAPI-Key': 'e31da31291mshb306adef46158efp19a130jsn52628ef7a009',
             'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
         }
     };
@@ -140,7 +140,7 @@ const cancion = async (albumId) => {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '',
+            'X-RapidAPI-Key': 'e31da31291mshb306adef46158efp19a130jsn52628ef7a009',
             'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
         }
     };
@@ -165,7 +165,7 @@ const cancion = async (albumId) => {
                 <div class="data_canciones" cancion-id="${dataUri}">
                     <div class="imagen_cancion">
                         <img src="${dataImage}" alt="" class="cancion">
-                     </div>
+                    </div>
                     <div class="info_cancion">
                         <p>${dataName}</p>
                         <h3>${dataArtista}</h3>
@@ -190,7 +190,7 @@ const listarCancion = async (cancionId) => {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '',
+            'X-RapidAPI-Key': 'e31da31291mshb306adef46158efp19a130jsn52628ef7a009',
             'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
         }
     };
@@ -221,6 +221,7 @@ const listarCancion = async (cancionId) => {
                         <p>${dataCancion}</p>
                         <h3>${dataArtista}</h3>
                     </div>
+                    <img src="../storage/musica.gif">
                 </div>
             `;
             derecha_canciones.append(etiqueta);

@@ -198,7 +198,7 @@ my-frame {
     justify-content: center;
     /* border: 1px solid blue; */
     width: 85%;
-    /* height: 85%; */
+    /* height: 100%; */
     height: 70%;   
 }
 
@@ -220,6 +220,7 @@ my-frame {
     display: flex;
     width: 100%;
     justify-content: center;
+    font-size: 1.5rem;
 }
 
 .section_centro_navegador {
@@ -333,6 +334,14 @@ my-frame {
     border-radius: 1rem;
 }
 
+.data_canciones img {
+    display: flex;
+    width: 10%;
+    font-size: 1rem;
+    margin-right: 1rem;
+    border-radius: 1rem;
+}
+
 .imagen_cancion {
     width: 20%;
     height: 100%;
@@ -414,7 +423,7 @@ my-frame {
         justify-content: center;
         align-items: center;
         font-size: 2rem;
-        color: white;
+        color: rgb(15, 230, 83);
         background: var(--color-tercer);
     }
     
@@ -505,7 +514,7 @@ my-frame {
         font-size: 2rem;
         border-radius: 1rem;
         background: var(--color-tercer);
-        color: white;
+        color: rgb(15, 230, 83);
     }
     
     .section_centro article {
@@ -536,7 +545,7 @@ my-frame {
         height: 50%;
     } */
 
-     my-frame {
+    my-frame {
         display: flex;
         width: 90%;
         /* height: 90%; */
