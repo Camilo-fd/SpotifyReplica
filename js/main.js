@@ -54,10 +54,16 @@ class myFrame extends HTMLElement {
         if (uri) {
             const id = uri.split(':')[2];
             const typeOf = uri.split(':')[1];
-            this.shadowRoot.innerHTML = `
-                <iframe class="spotify-iframe" width="100%" height="550" src="https://open.spotify.com/embed/${typeOf}/${id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-            `;
-            // 550
+            if (typeOf == "album" && window.innerWidth <= 800) {
+                this.shadowRoot.innerHTML = `
+                    <iframe class="spotify-iframe" width="100%" height="550" src="https://open.spotify.com/embed/${typeOf}/${id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                `;
+                // 550
+            } else {
+                this.shadowRoot.innerHTML = `
+                    <iframe class="spotify-iframe" width="100%" height="450" src="https://open.spotify.com/embed/${typeOf}/${id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                `;
+            }
         } else {
             this.shadowRoot.innerHTML = '';
         }
@@ -221,7 +227,7 @@ const listarCancion = async (cancionId) => {
                         <p>${dataCancion}</p>
                         <h3>${dataArtista}</h3>
                     </div>
-                    <img src="../storage/musica.gif">
+                    <img src="./storage/musica.gif">
                 </div>
             `;
             derecha_canciones.append(etiqueta);
