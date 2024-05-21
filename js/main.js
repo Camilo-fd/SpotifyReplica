@@ -87,7 +87,7 @@ export const albums = async (valor) => {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': 'e31da31291mshb306adef46158efp19a130jsn52628ef7a009',
+            'X-RapidAPI-Key': '4b1d6eee2emsh35c2f0964cc33c9p14f03ejsnc5693afebfb4 ',
             'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
         }
     };
@@ -146,7 +146,7 @@ const cancion = async (albumId) => {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': 'e31da31291mshb306adef46158efp19a130jsn52628ef7a009',
+            'X-RapidAPI-Key': '4b1d6eee2emsh35c2f0964cc33c9p14f03ejsnc5693afebfb4 ',
             'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
         }
     };
@@ -196,7 +196,7 @@ const listarCancion = async (cancionId) => {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': 'e31da31291mshb306adef46158efp19a130jsn52628ef7a009',
+            'X-RapidAPI-Key': '4b1d6eee2emsh35c2f0964cc33c9p14f03ejsnc5693afebfb4 ',
             'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
         }
     };
@@ -227,7 +227,7 @@ const listarCancion = async (cancionId) => {
                         <p>${dataCancion}</p>
                         <h3>${dataArtista}</h3>
                     </div>
-                    <img src="./storage/musica.gif">
+                    <img src="storage/musica.gif">
                 </div>
             `;
             derecha_canciones.append(etiqueta);
